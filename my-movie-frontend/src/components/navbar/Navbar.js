@@ -1,18 +1,24 @@
 import React, { Component } from "react";
+import { Button } from "../Button";
 import { MenuItems } from "./MenuItems";
-import icon from "../../images/tv.png";
 import "./Navbar.css";
+
 class Navbar extends Component {
-  statte = {};
+  state = { clicked: false };
+
   render() {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
           My Movie
-          <img className="logo" src={icon}></img>
+          <i class="fas fa-tv"></i>
         </h1>
-        <div className="menu-icon"></div>
-        <ul>
+        <div className="menu-icon" onClick={this.handleClick}>
+          <i
+            className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
+          ></i>
+        </div>
+        <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
           {MenuItems.map((item, index) => {
             return (
               <li key={index}>
@@ -23,6 +29,7 @@ class Navbar extends Component {
             );
           })}
         </ul>
+        <Button>Sign Up</Button>
       </nav>
     );
   }
