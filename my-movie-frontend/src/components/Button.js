@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import "./Button.css";
 
 const STYLES = ["btn--primary", "btn--outline"];
@@ -6,7 +6,7 @@ const STYLES = ["btn--primary", "btn--outline"];
 const SIZES = ["btn--medium", "btn--large"];
 
 export const Button = ({
-  Children,
+  children,
   type,
   onClick,
   buttonStyle,
@@ -15,14 +15,16 @@ export const Button = ({
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0];
+
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+
   return (
     <button
-      className={"btn ${checkButtonStyle} ${checkButtonSize}"}
+      className={`btn ${checkButtonStyle} ${checkButtonSize}`}
       onClick={onClick}
       type={type}
     >
-      {Children}
+      {children}
     </button>
   );
 };
