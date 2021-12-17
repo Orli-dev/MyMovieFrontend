@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import ContentModal from "../modal/ContentModal";
 
 import {
   MoviesContainer,
