@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import ContentModal from "../modal/ContentModal";
 
@@ -22,10 +23,20 @@ const Movies = ({ heading, data }) => {
             <MoviesCard key={index}>
               <MoviesInfo>
                 <MoviesTitle>{movie.name}</MoviesTitle>
-                <ContentModal>
-                  <MoviesImg src={movie.img} alt={movie.alt} />
-                </ContentModal>
-                <MoviesButton>{movie.button}</MoviesButton>
+
+                <MoviesImg src={movie.img} alt={movie.alt} />
+
+                <MoviesButton
+                  onClick={() =>
+                    axios
+                      .get("http://localhost:8091/iob/instances/ggg/rrr")
+                      .then((res) => {
+                        console.log(res);
+                      })
+                  }
+                >
+                  {movie.button}
+                </MoviesButton>
               </MoviesInfo>
             </MoviesCard>
           );
