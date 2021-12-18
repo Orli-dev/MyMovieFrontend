@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "../button/Button";
 import { MenuItems } from "./MenuItems";
+
 import "./Navbar.css";
 
 class Navbar extends Component {
@@ -13,11 +14,12 @@ class Navbar extends Component {
           My Movie
           <i class="fas fa-tv"></i>
         </h1>
-        <div className="menu-icon" onClick={this.handleClick}>
-          <i
-            className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
-          ></i>
+
+        <div className="searchBox">
+          <i class="fas fa-search"></i>
+          <input className="searchInput" placeholder="Search Movie\Serie ..." />
         </div>
+
         <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
           {MenuItems.map((item, index) => {
             return (
@@ -29,6 +31,7 @@ class Navbar extends Component {
             );
           })}
         </ul>
+
         <Button>Sign Up</Button>
       </nav>
     );

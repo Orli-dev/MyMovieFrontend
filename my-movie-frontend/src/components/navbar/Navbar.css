@@ -54,6 +54,17 @@ display: none;
 .menu-icon{
     display: none;
 }
+
+.searchBox{
+    position:absolute;
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px;
+    background-color: white;
+    border-radius: 6px;
+    width: 35%;
+    background-color: white;
+}
 @media screen and (max-width: 960px) {
     .NavbarItems{
         position: relative;
@@ -102,4 +113,21 @@ display: none;
         font-size: 1.8rem;
     }
     
+}
+
+.searchInput{
+     color: black;
+     font-size: 16px;
+     font-weight: bold;
+     border: none;
+     outline: none;
+     margin-left: 15px;
+}
+
+.movieListContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+    justify-content: space-evenly;
 }

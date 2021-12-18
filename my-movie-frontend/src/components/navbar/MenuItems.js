@@ -9,16 +9,16 @@ export const MenuItems = [
     url: "#",
     cName: "nav-links",
   },
-  {
-    title: "Movies",
-    url: "#",
-    cName: "nav-links",
-  },
-  {
-    title: "Series",
-    url: "#",
-    cName: "nav-links",
-  },
+  // {
+  //   title: "Movies",
+  //   url: "#",
+  //   cName: "nav-links",
+  // },
+  // {
+  //   title: "Series",
+  //   url: "#",
+  //   cName: "nav-links",
+  // },
   {
     title: "Sign up",
     url: "#",
