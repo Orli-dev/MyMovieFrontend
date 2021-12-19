@@ -121,7 +121,9 @@ display: none;
      font-weight: bold;
      border: none;
      outline: none;
-     margin-left: 15px;
+       width: 100%;
+
+  
 }
 
 .movieListContainer{

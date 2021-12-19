@@ -38,22 +38,22 @@ const MovieInfo = styled.span`
   text-overflow: ellipsis;
 `;
 
-const MovieComponent = ({ data }) => {
-  return data.map((movie) => {
-    return (
-      <MovieContainer
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <CoverImage src={movie.src} />
-        <MovieName>{movie.name}</MovieName>
-        <InfoColumn>
-          <MovieInfo>{movie.year}</MovieInfo>
-          <MovieInfo>Type: {movie.type}</MovieInfo>
-        </InfoColumn>
-      </MovieContainer>
-    );
-  });
+const MovieComponent = (props) => {
+  const { name, year, type, src } = props.movie;
+  return (
+    <MovieContainer
+      onClick={() => {
+        props.onMovieSelect(name);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+    >
+      <CoverImage src={src} />
+      <MovieName>{name}</MovieName>
+      <InfoColumn>
+        <MovieInfo>{year}</MovieInfo>
+        <MovieInfo>Type: {type}</MovieInfo>
+      </InfoColumn>
+    </MovieContainer>
+  );
 };
 export default MovieComponent;

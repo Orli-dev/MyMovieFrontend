@@ -5,6 +5,21 @@ import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 
 class Navbar extends Component {
+  //search API
+  // const fetchData = async (searchString) => {
+  //   const response = await Axios.get(
+  //     `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`,
+  //   );
+  //   updateMovieList(response.data.Search);
+  // };
+
+  // const onTextChange = (e) => {
+  //   onMovieSelect("")
+  //   clearTimeout(timeoutId);
+  //   updateSearchQuery(e.target.value);
+  //   const timeout = setTimeout(() => fetchData(e.target.value), 500);
+  //   updateTimeoutId(timeout);
+  // };
   state = { clicked: false };
 
   render() {

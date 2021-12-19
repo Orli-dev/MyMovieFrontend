@@ -16,9 +16,11 @@ const MovieListContainer = styled.div`
 `;
 function App() {
   const [selectedMovie, onMovieSelect] = useState();
+
   return (
     <Router>
       <Navbar />
+
       {selectedMovie && (
         <MovieInfoComponent
           selectedMovie={selectedMovie}
@@ -27,7 +29,14 @@ function App() {
       )}
 
       <MovieListContainer>
-        <MovieComponent data={moviesData} onMovieSelect={onMovieSelect} />{" "}
+        {moviesData.map((movie, index) => (
+          <MovieComponent
+            key={index}
+            movie={movie}
+            onMovieSelect={onMovieSelect}
+            MovieInfoComponent={movie}
+          />
+        ))}
       </MovieListContainer>
     </Router>
   );
