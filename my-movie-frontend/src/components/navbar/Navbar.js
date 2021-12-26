@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "../button/Button";
 import { MenuItems } from "./MenuItems";
-
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 class Navbar extends Component {
@@ -32,22 +32,28 @@ class Navbar extends Component {
 
         <div className="searchBox">
           <i className="fas fa-search"></i>
-          <input className="searchInput" placeholder="Search Movie\Serie ..." />
+          <Link to="/Catalog">
+            <input
+              className="searchInput"
+              placeholder="Search Movie\Serie ..."
+            />
+          </Link>
         </div>
 
         <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
           {MenuItems.map((item, index) => {
             return (
               <li key={index}>
-                <a className={item.cName} href={item.url}>
+                <Link className={item.cName} to={item.url}>
                   {item.title}
-                </a>
+                </Link>
               </li>
             );
           })}
         </ul>
-
-        <Button>Sign Up</Button>
+        <Link to={"/SignIn"}>
+          <Button>Sign In</Button>
+        </Link>
       </nav>
     );
   }

@@ -1,12 +1,12 @@
 export const MenuItems = [
-  {
-    title: "Home",
-    url: "#",
-    cName: "nav-links",
-  },
+  // {
+  //   title: "Home",
+  //   url: "#",
+  //   cName: "nav-links",
+  // },
   {
     title: "My Watch List",
-    url: "#",
+    url: "/WatchList",
     cName: "nav-links",
   },
   // {
@@ -19,9 +19,9 @@ export const MenuItems = [
   //   url: "#",
   //   cName: "nav-links",
   // },
-  {
-    title: "Sign up",
-    url: "#",
-    cName: "nav-links-mobile",
-  },
+  // {
+  //   title: "Sign up",
+  //   url: "#",
+  //   cName: "nav-links-mobile",
+  // },
 ];
