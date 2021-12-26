@@ -27,11 +27,11 @@ class Navbar extends Component {
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
           My Movie
-          <i class="fas fa-tv"></i>
+          <i className="fas fa-tv"></i>
         </h1>
 
         <div className="searchBox">
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
           <input className="searchInput" placeholder="Search Movie\Serie ..." />
         </div>
 
