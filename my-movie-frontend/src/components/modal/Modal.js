@@ -20,7 +20,7 @@ function Modal({ setOpenModal }) {
           <div className="sub-main">
             <div>
               <div>
-                <h1>Login Page</h1>
+                <h1>Sign In</h1>
                 <div>
                   <input type="text" placeholder="user name" className="name" />
                 </div>
