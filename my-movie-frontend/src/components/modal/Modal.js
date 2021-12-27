@@ -22,24 +22,16 @@ function Modal({ setOpenModal }) {
               <div>
                 <h1>Sign In</h1>
                 <div>
-                  <input type="text" placeholder="user name" className="name" />
+                  <input type="text" placeholder="email" className="name" />
                 </div>
-                <div className="second-input">
-                  <input
-                    type="password"
-                    placeholder="password"
-                    className="name"
-                  />
-                </div>
-                <div className="login-button">
-                  <Button>Login</Button>
-                </div>
-
-                <p className="link">
-                  <i className="sub-link">Forgot password ? </i> Or
-                  <i className="sub-link"> Sign Up</i>
-                </p>
               </div>
+              <div className="login-button">
+                <Button>Login</Button>
+              </div>
+
+              <p className="link">
+                <i className="sub-link"> Sign Up</i>
+              </p>
             </div>
           </div>
         </div>

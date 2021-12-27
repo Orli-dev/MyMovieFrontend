@@ -3,6 +3,8 @@ import { moviesData } from "../movie/data";
 import styled from "styled-components";
 import MovieComponent from "../movie/MovieComponent";
 import MovieInfoComponent from "../movie/MovieInfoComponent";
+// import Axios from "axios";
+
 const MovieListContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -13,8 +15,13 @@ const MovieListContainer = styled.div`
 `;
 
 export const Catalog = () => {
+  // Axios.get(
+  //   "http://localhost:8091/iob/instances/2022a.Moshe.Yakov/user@demo.com"
+  // ).then((res) => {
+  //   console.log(res.data);
+  // });
   const [selectedMovie, onMovieSelect] = useState();
-
+  // console.log("hi");
   return (
     <div>
       {selectedMovie && (

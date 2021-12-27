@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../button/Button";
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -53,11 +54,6 @@ const Close = styled.span`
   opacity: 0.8;
 `;
 const MovieInfoComponent = ({ props }) => {
-  //   useEffect(() => { // call info from API
-  //     Axios.get(
-  //       `https://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`
-  //     ).then((response) => setMovieInfo(response.data));
-  //   }, [selectedMovie]);
   return (
     <Container>
       <CoverImage src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg" />
