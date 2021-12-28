@@ -38,12 +38,12 @@ const MovieInfo = styled.span`
 `;
 
 const MovieComponent = (props) => {
-  const { name, type } = props.movie;
+  const { name, type, _id } = props.movie;
   const { imgURL, year } = props.att;
   return (
     <MovieContainer
       onClick={() => {
-        props.onMovieSelect(name);
+        props.onMovieSelect(_id);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
     >

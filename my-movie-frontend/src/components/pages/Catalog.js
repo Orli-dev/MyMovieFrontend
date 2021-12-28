@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { moviesData } from "../movie/data";
+import React, { useEffect, useState } from "react";
+// import { moviesData } from "../movie/data";
 import styled from "styled-components";
 import MovieComponent from "../movie/MovieComponent";
 import MovieInfoComponent from "../movie/MovieInfoComponent";
+import axios from "axios";
 // import Axios from "axios";
 
 const MovieListContainer = styled.div`
@@ -13,30 +14,37 @@ const MovieListContainer = styled.div`
   gap: 25px;
   justify-content: space-evenly; ;
 `;
+const client = axios.create({
+  baseURL: "http://localhost:8091/iob/instances/2022a.Moshe.Yakov",
+});
 
-export const Catalog = () => {
-  // Axios.get(
-  //   "http://localhost:8091/iob/instances/2022a.Moshe.Yakov/user@demo.com"
-  // ).then((res) => {
-  //   console.log(res.data);
-  // });
-  const [selectedMovie, onMovieSelect] = useState();
-  // console.log("hi");
+export const Catalog = (props) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function getData() {
+      const user = "user@demo.com";
+      const response = await client.get("/" + user);
+      setData(response.data);
+    }
+
+    getData();
+  }, []);
+  if (!data) return "No Data";
+
   return (
     <div>
-      {selectedMovie && (
-        <MovieInfoComponent
-          selectedMovie={selectedMovie}
-          onMovieSelect={onMovieSelect}
-        />
+      {data && (
+        <MovieInfoComponent selectedMovie={data} onMovieSelect={setData} />
       )}
 
       <MovieListContainer>
-        {moviesData.map((movie, index) => (
+        {data.map((movie, index) => (
           <MovieComponent
             key={index}
             movie={movie}
-            onMovieSelect={onMovieSelect}
+            att={movie.instanceAttributes}
+            onMovieSelect={setData}
             MovieInfoComponent={movie}
           />
         ))}

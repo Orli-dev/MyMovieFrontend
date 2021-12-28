@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "../button/Button";
 
@@ -53,13 +55,32 @@ const Close = styled.span`
   cursor: pointer;
   opacity: 0.8;
 `;
+
+const client = axios.create({
+  baseURL: "http://localhost:8091/iob/instances/2022a.Moshe.Yakov",
+});
+
 const MovieInfoComponent = ({ props }) => {
+  // const { selectedMovie } = props;
+  const [movieInfo, setMovieInfo] = useState(null);
+
+  useEffect(() => {
+    async function getData() {
+      const user = "user@demo.com";
+      const response = await client.get("/" + user);
+      setMovieInfo(response.movieInfo);
+    }
+
+    getData();
+  }, []);
+  if (!movieInfo) return "No Data";
+
   return (
     <Container>
       <CoverImage src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg" />
       <InfoColumn>
         <MovieName>
-          Type: <span>"Movie"</span>
+          Type: <span>{MovieInfo.type}</span>
         </MovieName>
         <MovieInfo>
           IMDB Rating: <span>"7.4"</span>
