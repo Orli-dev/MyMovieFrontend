@@ -24,7 +24,7 @@ export const Catalog = (props) => {
 
   useEffect(() => {
     async function getData() {
-      const user = "user@demo.com?size=2&page=";
+      const user = "user@demo.com?size=8&page=";
       const response = await client.get("/" + user + (currentPage - 1));
 
       setData(response.data);
@@ -65,9 +65,7 @@ export const Catalog = (props) => {
         previousLabel={"previous"}
         nextLabel={"next"}
         breakLabel={"..."}
-        pageCount={5}
-        marginPagesDisplayed={3}
-        pageRangeDisplayed={6}
+        pageCount={3}
         onPageChange={handlePageClick}
         containerClassName={"pagination"}
         pageClassName={"page-item"}

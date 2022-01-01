@@ -80,6 +80,7 @@ const MovieInfoComponent = (props) => {
   const { name, type } = movieInfo[0];
   const {
     imgURL,
+    genre,
     year,
     description,
     director,
@@ -97,10 +98,13 @@ const MovieInfoComponent = (props) => {
         </MovieName>
 
         <MovieInfo>
-          IMDB Rating: <span>{rating}</span>
+          Rating: <span>{rating}</span>
         </MovieInfo>
         <MovieInfo>
           Year: <span>{year}</span>
+        </MovieInfo>
+        <MovieInfo>
+          Genre: <span>{genre}</span>
         </MovieInfo>
         <MovieInfo>
           Language: <span>{language}</span>
