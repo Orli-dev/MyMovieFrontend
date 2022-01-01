@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const MovieContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,15 +39,10 @@ const MovieInfo = styled.span`
 `;
 
 const MovieComponent = (props) => {
-  const { name, type, _id } = props.movie;
+  const { name, type } = props.movie;
   const { imgURL, year } = props.att;
   return (
-    <MovieContainer
-      onClick={() => {
-        props.onMovieSelect(_id);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }}
-    >
+    <MovieContainer onClick={() => props.onMovieSelect(name)}>
       <CoverImage src={imgURL} />
       <MovieName>{name}</MovieName>
       <InfoColumn>

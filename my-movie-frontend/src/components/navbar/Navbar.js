@@ -7,35 +7,22 @@ import Modal from "../modal/Modal";
 
 export const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  //search API
-  // const fetchData = async (searchString) => {
-  //   const response = await Axios.get(
-  //     `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`,
-  //   );
-  //   updateMovieList(response.data.Search);
-  // };
 
-  // const onTextChange = (e) => {
-  //   onMovieSelect("")
-  //   clearTimeout(timeoutId);
-  //   updateSearchQuery(e.target.value);
-  //   const timeout = setTimeout(() => fetchData(e.target.value), 500);
-  //   updateTimeoutId(timeout);
-  // };
   const state = { clicked: false };
 
   return (
     <nav className="NavbarItems">
-      <h1 className="navbar-logo">
-        My Movie
-        <i className="fas fa-tv"></i>
-      </h1>
+      <Link to="/">
+        <h1 className="navbar-logo">
+          My Movie
+          <i className="fas fa-tv"></i>
+        </h1>
+      </Link>
 
       <div className="searchBox">
         <i className="fas fa-search"></i>
-        <Link to="/Catalog">
-          <input className="searchInput" placeholder="Search Movie\Serie ..." />
-        </Link>
+
+        <input className="searchInput" placeholder="Search Movie\Serie ..." />
       </div>
 
       <ul className={state.clicked ? "nav-menu active" : "nav-menu"}>

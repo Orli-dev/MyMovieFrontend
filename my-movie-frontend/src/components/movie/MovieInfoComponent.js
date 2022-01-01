@@ -57,71 +57,67 @@ const Close = styled.span`
 `;
 
 const client = axios.create({
-  baseURL: "http://localhost:8091/iob/instances/2022a.Moshe.Yakov",
+  baseURL:
+    "http://localhost:8091/iob/instances/2022a.Moshe.Yakov/user@demo.com/search/byName/",
 });
 
-const MovieInfoComponent = ({ props }) => {
-  // const { selectedMovie } = props;
-  const [movieInfo, setMovieInfo] = useState(null);
+const MovieInfoComponent = (props) => {
+  const [movieInfo, setMovieInfo] = useState();
+
+  const { selectMovie } = props;
 
   useEffect(() => {
     async function getData() {
-      const user = "user@demo.com";
-      const response = await client.get("/" + user);
-      setMovieInfo(response.movieInfo);
+      const response = await client.get("/" + selectMovie);
+
+      setMovieInfo(response.data);
     }
 
     getData();
-  }, []);
+  }, [selectMovie]);
   if (!movieInfo) return "No Data";
 
+  const { name, type } = movieInfo[0];
+  const {
+    imgURL,
+    year,
+    description,
+    director,
+    cast,
+    rating,
+    language,
+    origin,
+  } = movieInfo[0].instanceAttributes;
   return (
     <Container>
-      <CoverImage src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg" />
+      <CoverImage src={imgURL} />
       <InfoColumn>
         <MovieName>
-          Type: <span>{MovieInfo.type}</span>
+          {type}: <span>{name}</span>
         </MovieName>
+
         <MovieInfo>
-          IMDB Rating: <span>"7.4"</span>
+          IMDB Rating: <span>{rating}</span>
         </MovieInfo>
         <MovieInfo>
-          Year: <span>"2020"</span>
+          Year: <span>{year}</span>
         </MovieInfo>
         <MovieInfo>
-          Language: <span>"English"</span>
+          Language: <span>{language}</span>
         </MovieInfo>
         <MovieInfo>
-          Director: <span>"Craig Gillespie"</span>
+          Director: <span>{director}</span>
         </MovieInfo>
         <MovieInfo>
-          Actors:{" "}
-          <span>
-            "Emma Thompson, Joel Fry, Paul Walter Hauser, John McCrea"
-          </span>
+          Cast: <span>{cast}</span>
         </MovieInfo>
         <MovieInfo>
-          Plot:{" "}
-          <span>
-            "Before she becomes Cruella de Vil, teenage Estella has a dream. She
-            wishes to become a fashion designer, having been gifted with talent,
-            innovation, and ambition all in equal measures. But life seems
-            intent on making sure her dreams never come true. Having wound up
-            penniless and orphaned in London at 12, 10 years later Estella runs
-            wild through the city streets with her best friends and
-            partners-in-(petty)-crime, Horace and Jasper, two amateur thieves.
-            When a chance encounter vaults Estella into the world of the young
-            rich and famous, however, she begins to question the existence she's
-            built for herself in London and wonders whether she might, indeed,
-            be destined for more after all."
-          </span>
+          Description: <span>{description}</span>
         </MovieInfo>
         <MovieInfo>
-          Origin: <span>"United States, United Kingdom"</span>
+          Origin: <span>{origin}</span>
         </MovieInfo>
-        <MovieInfo>
-          Is watched: <span>"true"</span>
-        </MovieInfo>
+        <MovieInfo>{/* Is watched: <IsWatched>true</IsWatched> */}</MovieInfo>
         <Button>Add to Watch List</Button>
       </InfoColumn>
       <Close onClick={() => props.onMovieSelect()}>X</Close>

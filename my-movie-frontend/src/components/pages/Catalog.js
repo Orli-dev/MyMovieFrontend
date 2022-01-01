@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import { moviesData } from "../movie/data";
 import styled from "styled-components";
+import ReactPaginate from "react-paginate";
 import MovieComponent from "../movie/MovieComponent";
 import MovieInfoComponent from "../movie/MovieInfoComponent";
 import axios from "axios";
-// import Axios from "axios";
 
 const MovieListContainer = styled.div`
   display: flex;
@@ -20,35 +19,67 @@ const client = axios.create({
 
 export const Catalog = (props) => {
   const [data, setData] = useState(null);
+  const [selectMovie, onMovieSelect] = useState();
+  const [currentPage, setPage] = useState(1);
 
   useEffect(() => {
     async function getData() {
-      const user = "user@demo.com";
-      const response = await client.get("/" + user);
+      const user = "user@demo.com?size=2&page=";
+      const response = await client.get("/" + user + (currentPage - 1));
+
       setData(response.data);
     }
 
     getData();
-  }, []);
+  }, [currentPage]);
+
   if (!data) return "No Data";
+
+  const handlePageClick = (data) => {
+    setPage(data.selected + 1);
+
+    data.selected = currentPage;
+  };
 
   return (
     <div>
-      {data && (
-        <MovieInfoComponent selectedMovie={data} onMovieSelect={setData} />
+      {selectMovie && (
+        <MovieInfoComponent
+          selectMovie={selectMovie}
+          onMovieSelect={onMovieSelect}
+        />
       )}
-
       <MovieListContainer>
         {data.map((movie, index) => (
           <MovieComponent
             key={index}
             movie={movie}
             att={movie.instanceAttributes}
-            onMovieSelect={setData}
-            MovieInfoComponent={movie}
+            onMovieSelect={onMovieSelect}
+            onClicked={movie}
+            MovieInfoComponent={movie.name}
           />
         ))}
       </MovieListContainer>
+      <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        pageCount={5}
+        marginPagesDisplayed={3}
+        pageRangeDisplayed={6}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+        activeClassName="active"
+      />
     </div>
   );
 };
