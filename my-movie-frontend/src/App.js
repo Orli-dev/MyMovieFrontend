@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import { Catalog } from "./components/pages/Catalog";
+import { Catalog } from "./components/catalog/Catalog";
 
 function App() {
   return (
