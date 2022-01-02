@@ -20,7 +20,7 @@ const client = axios.create({
 });
 export const WatchList = () => {
   const [dataMovies, setMovies] = useState(null);
-  const [selectMovie, onMovieSelect] = useState();
+  // const [selectMovie, onMovieSelect] = useState();
 
   useEffect(() => {
     async function getDataMovies() {
@@ -36,19 +36,13 @@ export const WatchList = () => {
   if (!dataMovies) return "No Data";
 
   return (
-    //  {selectMovie && (
-    //     <MovieInfoComponent
-    //       selectMovie={selectMovie}
-    //       onMovieSelect={onMovieSelect}
-    //     />
-    //   )}
     <MovieListContainer>
       {dataMovies.map((movie, index) => (
         <MovieComponent
           key={index}
           movie={movie}
           att={movie.instanceAttributes}
-          onMovieSelect={onMovieSelect}
+          // onMovieSelect={onMovieSelect}
           // onClicked={movie}
           // MovieInfoComponent={movie.name}
         />

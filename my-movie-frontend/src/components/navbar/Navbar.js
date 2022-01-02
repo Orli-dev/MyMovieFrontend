@@ -3,7 +3,7 @@ import { Button } from "../button/Button";
 import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Modal from "../modal/Modal";
+import Modal from "../signIn/Modal";
 
 export const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
