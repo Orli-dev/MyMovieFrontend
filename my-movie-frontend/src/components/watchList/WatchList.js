@@ -20,16 +20,15 @@ const client = axios.create({
 });
 export const WatchList = () => {
   const [dataMovies, setMovies] = useState(null);
-  // const [selectMovie, onMovieSelect] = useState();
 
   useEffect(() => {
     async function getDataMovies() {
-      let address = "61d0a76522af4026dceeea23/children";
+      let address = "61d199c53fa22b533866f5fe/children"; // change id watch list from avatar in DB
       const response = await client.get(address);
 
       setMovies(response.data);
     }
-    // console.log(dataMovies);
+
     getDataMovies();
   }, []);
 
@@ -42,9 +41,6 @@ export const WatchList = () => {
           key={index}
           movie={movie}
           att={movie.instanceAttributes}
-          // onMovieSelect={onMovieSelect}
-          // onClicked={movie}
-          // MovieInfoComponent={movie.name}
         />
       ))}
     </MovieListContainer>
