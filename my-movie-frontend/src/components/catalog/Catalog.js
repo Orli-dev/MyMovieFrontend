@@ -33,7 +33,7 @@ export const Catalog = (props) => {
     getData();
   }, [currentPage]);
 
-  if (!data) return "No Data";
+  if (!data) return "There are no movies/series to display.";
 
   const handlePageClick = (data) => {
     setPage(data.selected + 1);

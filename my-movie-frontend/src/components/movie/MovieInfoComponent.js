@@ -75,7 +75,7 @@ const MovieInfoComponent = (props) => {
 
     getData();
   }, [selectMovie]);
-  if (!movieInfo) return "No Data";
+  if (!movieInfo) return "There are no movies/series to display.";
 
   const { name, type } = movieInfo[0];
   const {

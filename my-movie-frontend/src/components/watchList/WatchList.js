@@ -33,7 +33,7 @@ export const WatchList = () => {
     getDataMovies();
   }, []);
 
-  if (!dataMovies) return "No Data";
+  if (!dataMovies) return "There are no movies/series to display.";
 
   return (
     <MovieListContainer>
