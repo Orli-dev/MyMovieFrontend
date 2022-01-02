@@ -23,7 +23,7 @@ export const WatchList = () => {
 
   useEffect(() => {
     async function getDataMovies() {
-      let address = "61d199c53fa22b533866f5fe/children"; // change id watch list from avatar in DB
+      let address = "61d1a8d23fa22b533866f608/children"; // change id watch list from avatar in DB
       const response = await client.get(address);
 
       setMovies(response.data);
